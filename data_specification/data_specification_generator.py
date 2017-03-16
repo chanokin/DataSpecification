@@ -1472,7 +1472,7 @@ class DataSpecificationGenerator(object):
         self.write_command_to_files(cmd_word_list, cmd_string)
         self.spec_writer.write(data.tostring())
 
-    def switch_write_focus(self, region):
+    def switch_write_focus(self, region, label=""):
         """ Insert command to switch the region being written to
 
         :param region: The id of the region to switch to, between 0 and 15
@@ -1511,7 +1511,7 @@ class DataSpecificationGenerator(object):
 
         reg_usage = 0x0
         parameters = region & 0xF
-        cmd_string = "SWITCH_FOCUS memRegion = {0:d}".format(region)
+        cmd_string = "SWITCH_FOCUS memRegion {1:d} {0:s}".format(label, region)
 
         # Write command to switch focus:
         cmd_word = (
